@@ -48,7 +48,7 @@ public class AdminController {
     @PostMapping("/save")
     public String create(@ModelAttribute("user") User newUser,
                          @RequestParam(name="roles", required = false) String[] roles) {
-        List<Role> roles1 = new ArrayList<>();
+        Set<Role> roles1 = new HashSet<>();
         for (String role: roles) {
             roles1.add(roleService.getRoleByRoleName(role));
             newUser.setRoles(roles1);
@@ -63,9 +63,9 @@ public class AdminController {
     public String update
             (@ModelAttribute("user") User user, @PathVariable("id") long id,
              @RequestParam(name="roles", required = false) String[] roles) {
-        List<Role> roles1 = new ArrayList<>();
+        Set<Role> roles1 = new HashSet<>();
         if(roles == null) {
-            user.setRoles((List<Role>) userService.showById(id).getRoles());
+            user.setRoles((Set<Role>) userService.showById(id).getRoles());
         } else {
             for (String role: roles) {
                 roles1.add(roleService.getRoleByRoleName(role));

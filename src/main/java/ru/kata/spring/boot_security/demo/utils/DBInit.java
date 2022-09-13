@@ -9,7 +9,9 @@ import ru.kata.spring.boot_security.demo.services.RoleService;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class DBInit implements CommandLineRunner {
@@ -31,8 +33,8 @@ public class DBInit implements CommandLineRunner {
         roleService.save(role1);
         roleService.save(role2);
 
-        List<Role> roleAdmin = new ArrayList<>();
-        List<Role> roleUser = new ArrayList<>();
+        Set<Role> roleAdmin = new HashSet<>();
+        Set<Role> roleUser = new HashSet<>();
         roleAdmin.add(role1);
         roleUser.add(role2);
         User user1 = new User("nikita@mail.ru", "nikita", "grakov", "admin", roleAdmin);

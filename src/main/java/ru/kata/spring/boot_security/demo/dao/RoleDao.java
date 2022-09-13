@@ -11,5 +11,5 @@ public interface RoleDao {
     void save(Role role);
     void update(Role updatedRole);
     void delete(int id);
-    List<Role> getDemandedRoles();
+    Set<Role> getDemandedRoles();
 }
